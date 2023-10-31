@@ -34,24 +34,27 @@ public class BootStrapData implements CommandLineRunner {
         Organizzazione fr  = new Organizzazione();
         Organizzazione it  = new Organizzazione();
         Organizzazione neth  = new Organizzazione();
+        Organizzazione euro  = new Organizzazione();
+
 
         ger.setNazione("Germania");
         spn.setNazione("Spagna");
         fr.setNazione("Francia");
         it.setNazione("Italia");
         neth.setNazione("Paesi Bassi");
+        euro.setNazione("Euro");
 
         Organizzazione gerSaved = organizzazioneRepository.save(ger);
         Organizzazione spnSaved = organizzazioneRepository.save(spn);
         Organizzazione frSaved = organizzazioneRepository.save(fr);
         Organizzazione itSaved = organizzazioneRepository.save(it);
         Organizzazione nethSaved = organizzazioneRepository.save(neth);
-
+        Organizzazione euroSaved  = organizzazioneRepository.save(euro);
 
         String filePath = "C:\\Users\\NadrAbouMoustafa\\Downloads\\prestiti_organizzazioni.csv";
         File CSVFile = new File(filePath);
         Scanner sc = new Scanner(CSVFile);
-        sc.useDelimiter(";");
+        sc.useDelimiter("[;\\n]");
 
         for(int i=0;sc.hasNext();i++)
         {
@@ -80,10 +83,12 @@ public class BootStrapData implements CommandLineRunner {
                     case 5:
                         r1.setOrganizzazione(neth);
                         break;
+                    case 6:
+                        r1.setOrganizzazione(euro);
                 }
                 rilevamentoRepository.save(r1);
             }
-            if(i==5){
+            if(i==6){
                 i=-1;
                 sc.nextLine();
             }

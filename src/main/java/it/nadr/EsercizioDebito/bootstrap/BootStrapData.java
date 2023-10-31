@@ -90,7 +90,6 @@ public class BootStrapData implements CommandLineRunner {
             }
             if(i==6){
                 i=-1;
-                sc.nextLine();
             }
         }
         sc.close();
